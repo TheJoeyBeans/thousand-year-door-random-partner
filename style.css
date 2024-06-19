@@ -23,7 +23,6 @@ body {
 #partner-text-container {
   display: flex;
   align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
 }
 
 #random-partner {
