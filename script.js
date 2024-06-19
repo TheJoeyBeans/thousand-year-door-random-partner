@@ -1,5 +1,5 @@
 // Function to generate random text
-function generateRandomPartner() {
+function generateRandomPartner(currentPartner) {
   const partners = [
     { name: "Gombella", color: "#E68362" },
     { name: "Vivan", color: "#963DA7" },
@@ -8,15 +8,22 @@ function generateRandomPartner() {
     { name: "Shrimp", color: "#D74259" },
   ];
 
-  const randomIndex = Math.floor(Math.random() * partners.length);
-  return partners[randomIndex];
+  const filteredPartners = partners.filter((partner) => {
+    return partner.name !== currentPartner;
+  });
+
+  const randomIndex = Math.floor(Math.random() * filteredPartners.length);
+  return filteredPartners[randomIndex];
 }
 
 // Sets the random partner
 function setRandomPartner(randomTextElement) {
-  const randomPartner = generateRandomPartner();
+  const currentPartner = randomTextElement.textContent;
+  const randomPartner = generateRandomPartner(currentPartner);
+
   randomTextElement.textContent = randomPartner.name;
   randomTextElement.style.color = randomPartner.color;
+
   const audioElement = document.getElementById("lucky-sound");
   audioElement.play();
 }
