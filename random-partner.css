@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Super Mario 256';
+  src: url('SuperMario256.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Super Mario 256', Arial, sans-serif; /* Assuming you've defined the custom font earlier */
+  font-size: 1.5em; /* Adjust font size as needed */
+  text-align: center;
+}
+
+#partner-label {
+  color: red; /* Inner color */
+  text-shadow:
+    -1px -1px 0 white,  
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white; /* Outline effect */
+}
+
+#partner-text-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+#random-partner {
+  margin-left: 10px;
+  text-shadow:
+  -1px -1px 0 white,  
+   1px -1px 0 white,
+  -1px  1px 0 white,
+   1px  1px 0 white; /* Outline effect */
+}
