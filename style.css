@@ -20,6 +20,35 @@ body {
   height: auto; /* Maintain aspect ratio */
 }
 
+.social-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+}
+
+.social-link:hover {
+  text-decoration: none; /* Remove underline on hover */
+  color: inherit; /* Inherit text color on hover */
+}
+
+.social-YT{
+  width: 200px; /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: -25px;
+}
+
+.social-YT:hover{
+  cursor: pointer;
+}
+
+.social-Twitch{
+  width: 150px; /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.social-Twitch:hover{
+  cursor: pointer;
+}
+
 .index-text {
   color: red; /* Inner color */
   text-shadow:
