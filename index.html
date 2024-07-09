@@ -4,14 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Paper Mario Party Member</title>
+    <link rel="icon" href="Images/Paper_Mario_Head-removebg-preview.png">
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <audio id="lucky-sound" src="lucky-sound.mp3" preload="auto"></audio>
-    <div id="partner-text-container">
-      <h2 id="partner-label">Partner:</h2>
-      <h2 id="random-partner"></h2>
+  <body id="index-body">
+    <img src="Images/Mario Thumbs up.png" class="small-image" />
+    <div id="settings-container">
+      <h3 class="index-text">Select Partners:</h3>
+      <form id="partner-form"></form>
+      <h3 class="index-text">Set Timer Interval (minutes):</h3>
+      <label class="index-text" for="min-interval">Min:</label>
+      <input
+        type="number"
+        id="min-interval"
+        name="min-interval"
+        value="1"
+        min="1"
+      />
+      <label class="index-text" for="max-interval">Max:</label>
+      <input
+        type="number"
+        id="max-interval"
+        name="max-interval"
+        value="5"
+        min="1"
+      />
+    </div>
+    <div>
+      <button id="generate-randomizer">Generate Randomizer</button>
+      <p class="index-text">*You can use the generated URL as a browser source in your favorite streaming software!</p>
     </div>
     <script src="script.js"></script>
+    <script
+      type="text/javascript"
+      src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+      class="kofi-button"
+    ></script>
+    <script type="text/javascript">
+      kofiwidget2.init("Buy me a coffee", "#29abe0", "N4N610BB7E");
+      kofiwidget2.draw();
+    </script>
   </body>
 </html>
