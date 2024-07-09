@@ -1,53 +1,81 @@
-// Function to generate random text
-function generateRandomPartner(currentPartner) {
-  const partners = [
-    { name: "Gombella", color: "#E68362" },
-    { name: "Vivan", color: "#963DA7" },
-    { name: "Flurrie", color: "#B7B2E4" },
-    { name: "Koops", color: "#089A20" },
-    { name: "Shrimp", color: "#D74259" },
-  ];
+const partners = [
+  { name: "Goombella", color: "#E68362" },
+  { name: "Vivian", color: "#963DA7" },
+  { name: "Flurrie", color: "#B7B2E4" },
+  { name: "Koops", color: "#089A20" },
+  { name: "Shrimp", color: "#D74259" },
+  { name: "Ms. Mowz", color: "#F32706" },
+  { name: "Bobbery", color: "#112273" },
+];
 
-  const filteredPartners = partners.filter((partner) => {
-    return partner.name !== currentPartner;
+document.addEventListener("DOMContentLoaded", function () {
+  const partnerForm = document.getElementById("partner-form");
+
+  partners.forEach((partner) => {
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "partner";
+    checkbox.value = partner.name;
+    checkbox.checked = true;
+
+    const span = document.createElement("span");
+    span.textContent = partner.name;
+    span.style.color = partner.color;
+    span.style.textShadow = `
+  -1px -1px 0 white,  
+   1px -1px 0 white,
+  -1px  1px 0 white,
+   1px  1px 0 white
+`;
+
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    partnerForm.appendChild(label);
+    partnerForm.appendChild(document.createElement("br"));
   });
 
-  const randomIndex = Math.floor(Math.random() * filteredPartners.length);
-  return filteredPartners[randomIndex];
-}
+  document
+    .getElementById("generate-randomizer")
+    .addEventListener("click", function () {
+      const selectedPartners = getSelectedPartners();
+      const { minInterval, maxInterval } = getTimerIntervals();
 
-// Sets the random partner
-function setRandomPartner(randomTextElement) {
-  const currentPartner = randomTextElement.textContent;
-  const randomPartner = generateRandomPartner(currentPartner);
+      const settings = {
+        partners: selectedPartners,
+        minInterval: minInterval,
+        maxInterval: maxInterval,
+      };
 
-  randomTextElement.textContent = randomPartner.name;
-  randomTextElement.style.color = randomPartner.color;
+      const encodedSettings = btoa(JSON.stringify(settings)); // Encode the settings as Base64
 
-  const audioElement = document.getElementById("lucky-sound");
-  audioElement.play();
-}
+      const newUrl = `randomizer.html?settings=${encodedSettings}`;
+      window.open(newUrl, "_blank");
+    });
 
-// Function to set random timer
-function setRandomTimer() {
-  const minInterval = 1; // Minimum interval in minutes
-  const maxInterval = 5; // Maximum interval in minutes
-
-  const randomMinutes =
-    Math.floor(Math.random() * (maxInterval - minInterval + 1)) + minInterval;
-  const milliseconds = randomMinutes * 60 * 1000;
-  const randomTextElement = document.getElementById("random-partner");
-  if (randomTextElement.innerHTML === "") {
-    setRandomPartner(randomTextElement);
+  function getSelectedPartners() {
+    const checkboxes = document.querySelectorAll(
+      "#partner-form input[type='checkbox']"
+    );
+    const selectedPartners = [];
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        selectedPartners.push(checkbox.value);
+      }
+    });
+    return selectedPartners;
   }
 
-  setTimeout(function () {
-    setRandomPartner(randomTextElement);
+  function getTimerIntervals() {
+    const minInterval = parseInt(
+      document.getElementById("min-interval").value,
+      10
+    );
+    const maxInterval = parseInt(
+      document.getElementById("max-interval").value,
+      10
+    );
+    return { minInterval, maxInterval };
+  }
+});
 
-    // Reset timer after generating text
-    setRandomTimer();
-  }, milliseconds);
-}
-
-// Initialize the first random timer
-setRandomTimer();

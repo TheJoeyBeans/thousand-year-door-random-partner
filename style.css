@@ -11,6 +11,24 @@ body {
   text-align: center;
 }
 
+#index-body{
+  background-color: #ECECEC;
+}
+
+.small-image {
+  width: 200px; /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.index-text {
+  color: red; /* Inner color */
+  text-shadow:
+    -1px -1px 0 white,  
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white; /* Outline effect */
+}
+
 #partner-label {
   color: red; /* Inner color */
   text-shadow:
@@ -32,4 +50,12 @@ body {
    1px -1px 0 white,
   -1px  1px 0 white,
    1px  1px 0 white; /* Outline effect */
+}
+
+.kofi-button {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  text-align: center;
 }
